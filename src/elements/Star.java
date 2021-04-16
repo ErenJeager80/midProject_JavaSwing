@@ -1,4 +1,4 @@
 package elements;
 
-public class Star {
+public class Star extends Elements{
 }

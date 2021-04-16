@@ -17,6 +17,7 @@ public class Board extends JFrame {
         jPanel.add(resBtn);
         jPanel.setSize(150,Config.HEIGHT*40);
         jPanel.setLocation(Config.WIDTH*40 + 1,0);
+        // main page
         setSize(Config.WIDTH*40 + 17 + 150 , Config.HEIGHT * 40 + 41);
         setLocation(500, 100);
         setTitle("Game");

@@ -1,4 +1,4 @@
 package elements;
 
-public class Piece {
+public class Piece extends Elements {
 }

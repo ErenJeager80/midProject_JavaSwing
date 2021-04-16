@@ -2,6 +2,10 @@ package main;
 
 import javax.swing.*;
 import java.awt.*;
+import java.awt.event.ActionListener;
+
+import pages.ConfigWindow;
+import pages.Board;
 
 public class Main {
     public static void main(String[] args) {
@@ -9,36 +13,15 @@ public class Main {
         EventQueue.invokeLater(new Runnable() {
             @Override
             public void run() {
-                Window window = new Window();
+                Board window = new Board();
+//                ConfigWindow cWindow = new ConfigWindow();
                 window.setDefaultCloseOperation(WindowConstants.EXIT_ON_CLOSE);
                 window.setVisible(true);
+//                cWindow.setVisible(true);
+//                cWindow.setDefaultCloseOperation(WindowConstants.DO_NOTHING_ON_CLOSE);
                 window.toFront();
             }
         });
-    }
-}
-class Window extends JFrame {
-    public Window() throws HeadlessException {
-        setSize(500,500);
-        setLocationByPlatform(true);
-        setTitle("Game");
-        setResizable(false);
-        Image img = new ImageIcon("E:\\University\\Semester 2\\Advance Programming\\Projects\\midProject_JavaSwing\\src\\elements\\assets\\logo.jpg").getImage();
-        setIconImage(img);
-//        setExtendedState(Frame.MAXIMIZED_BOTH);
-        Component cmp = new Component();
-        add(cmp);
-    }
-}
-
-class Component extends JComponent{
-    @Override
-    protected void paintComponent(Graphics g) {
-        g.drawString("welcome to the game",150,10);
-    }
-
-    @Override
-    public Dimension getPreferredSize() {
-        return new Dimension(300,20);
+        String[] fonts = GraphicsEnvironment.getLocalGraphicsEnvironment().getAvailableFontFamilyNames();
     }
 }

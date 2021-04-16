@@ -1,4 +1,4 @@
 package elements;
 
-public class Snail {
+public class Snail extends Elements{
 }

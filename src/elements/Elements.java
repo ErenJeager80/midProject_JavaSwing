@@ -1,2 +1,4 @@
-package elements;public class Elements {
+package elements;
+
+public class Elements {
 }
