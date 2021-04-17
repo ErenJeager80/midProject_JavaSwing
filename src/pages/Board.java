@@ -16,8 +16,8 @@ public class Board extends JFrame {
         JButton resBtn = new JButton("Reset");
         jPanel.add(subBtn);
         jPanel.add(resBtn);
-        jPanel.setSize(150,Config.HEIGHT*40);
-        jPanel.setLocation(Config.WIDTH*40 + 2,1);
+        jPanel.setSize(150,Config.HEIGHT*40 + 1);
+        jPanel.setLocation(Config.WIDTH*40 + 3,1);
         // whole page
         setSize(Config.WIDTH*40 + 17 + 150 , Config.HEIGHT * 40 + 42);
         setLocation(500, 100);
