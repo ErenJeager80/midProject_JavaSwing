@@ -11,7 +11,7 @@ public class ConfigWindow extends JFrame {
         btn.setLocation(35,400);
         add(btn);
         setSize(180, 480);
-        setLocation(504+ Config.WIDTH*41, 150);
+        setLocation(504+ Config.getWIDTH()*41, 150);
         setTitle(" ");
         setResizable(false);
         ConfigComponent cmp = new ConfigComponent();
