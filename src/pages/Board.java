@@ -1,26 +1,26 @@
 package pages;
 
 import javax.swing.*;
-import javax.swing.border.BevelBorder;
-import javax.swing.border.Border;
+
 import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
-import java.awt.event.WindowEvent;
-import java.awt.event.WindowListener;
-import java.awt.geom.Ellipse2D;
+
 import java.awt.geom.Rectangle2D;
 import elements.*;
-
 import elements.Bead;
-import main.Config;
+import main.Player;
+
+import static main.Config.*;
+import static main.Globals.players;
+
 
 public class Board extends JFrame {
-    private JPanel configPanel;
+    private final JPanel configPanel;
     JButton subBtn;
     JButton resBtn;
-    BoardComponent bcmp;
     public Board() throws HeadlessException {
+        setLayout(null) ;
         configPanel = new JPanel();//config panel
         try {
             UIManager.setLookAndFeel("javax.swing.plaf.nimbus.NimbusLookAndFeel");
@@ -32,25 +32,29 @@ public class Board extends JFrame {
         resBtn = new JButton("Reset");
         configPanel.add(subBtn);
         configPanel.add(resBtn);
-        configPanel.setSize(150,Config.getHEIGHT()*40 + 1);
-        configPanel.setLocation(Config.getWIDTH()*40 + 3,1);
+        configPanel.setSize(150,getHEIGHT()*40 + 1);
+        configPanel.setLocation(getWIDTH()*40 + 3,1);
         BtnListener btnListener = new BtnListener();
         subBtn.addActionListener(btnListener);
         resBtn.addActionListener(btnListener);
         // whole page
-        setSize(Config.getWIDTH()*40 + 20 + 150 , Config.getHEIGHT() * 40 + 42);
+        setSize(getWIDTH()*40 + 20 + 150 , getHEIGHT() * 40 + 42);
         setLocation(500, 100);
         setTitle("Game");
         setResizable(false);
         Image img = new ImageIcon("E:\\University\\Semester 2\\Advance Programming\\Projects\\midProject_JavaSwing\\src\\elements\\assets\\logo.jpg").getImage();
         setIconImage(img);
-        bcmp = new BoardComponent();
-        bcmp.setBorder(new BevelBorder(BevelBorder.RAISED,Color.gray,Color.PINK));
         add(configPanel);
-        add(bcmp); // btn >> jPanel >> Jframe
-        getContentPane().setBackground(Color.pink);
-        for(int i=0;i<Config.getHEIGHT();i++)
-            for(int j=0;j<Config.getWIDTH();j++)
+        Bead b0=new Bead(0,0,0,true);
+        Bead b1=new Bead(getWIDTH()-1,getWIDTH()-1,1,false);
+        players[0]=new Player(b0);
+        players[1]=new Player(b1);
+        add(b0); // btn >> jPanel >> Jframe
+        add(b1); // btn >> jPanel >> Jframe
+
+
+        for(int i=0;i<getHEIGHT();i++)
+            for(int j=0;j<getWIDTH();j++)
                 add(new Tile(j,i));
     }
     class BtnListener implements ActionListener{
@@ -72,9 +76,9 @@ class BoardComponent extends JComponent{
         Graphics2D graphics2D = (Graphics2D)g;
 //        Image BackImg1 = new ImageIcon("E:\\University\\Semester 2\\Advance Programming\\Projects\\midProject_JavaSwing\\src\\elements\\assets\\download.png").getImage();
 //        Image BackImg2 = new ImageIcon("E:\\University\\Semester 2\\Advance Programming\\Projects\\midProject_JavaSwing\\src\\elements\\assets\\download1.png").getImage();
-//        for(int i=0;i<Config.getHEIGHT();i++)
-//            for(int j = 0; j<Config.getWIDTH();j++){
-//                rectangle2D = new Rectangle2D.Double(j*Config.getTile_Size(),i*Config.getTile_Size(),Config.getTile_Size(),Config.getTile_Size());
+//        for(int i=0;i<getHEIGHT();i++)
+//            for(int j = 0; j<getWIDTH();j++){
+//                rectangle2D = new Rectangle2D.Double(j*getTile_Size(),i*getTile_Size(),getTile_Size(),getTile_Size());
 //                if((i+j)%2==0)
 //                    graphics2D.setPaint(new Color(102, 255, 0, 195));
 //                else
@@ -86,11 +90,11 @@ class BoardComponent extends JComponent{
         //add(new Bead(1,3),1);
 
         Font font = new Font("B Sahar",Font.BOLD,28);
-        g.drawString("Join the Game",Config.getWIDTH()*40 + 30,20);
+        g.drawString("Join the Game",getWIDTH()*40 + 30,20);
     }
     @Override
     public Dimension getPreferredSize() {
-        return new Dimension(Config.getWIDTH()*40 + 1, Config.getHEIGHT()*40 + 1);
+        return new Dimension(getWIDTH()*40 + 1, getHEIGHT()*40 + 1);
     }
 }
 
@@ -102,8 +106,8 @@ class BoardComponent extends JComponent{
 //        JButton resBtn = new JButton("Reset");
 //        jPanel.add(subBtn);
 //        jPanel.add(resBtn);
-//        jPanel.setSize(150,Config.getHEIGHT()*40 + 1);
-//        jPanel.setLocation(Config.getWIDTH()*40 + 3,1);
+//        jPanel.setSize(150,getHEIGHT()*40 + 1);
+//        jPanel.setLocation(getWIDTH()*40 + 3,1);
 //    }
 //
 //    @Override
